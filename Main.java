@@ -148,3 +148,41 @@ private static void handleAdmin(Admin admin) {
         System.out.println("Own credentials changed successfully");
     }
     
+    private static void handleOffice(Office office) {
+        System.out.println("Welcome, Office!");
+        boolean running = true;
+        while (running) {
+            System.out.println("\nChoose an option:");
+            System.out.println("1. Generate Course Report");
+            System.out.println("2. Generate Student Report");
+            System.out.println("3. Generate Lecturer Report");
+            System.out.println("4. Change Own Credentials");
+            System.out.println("5. Logout");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    office.generateCourseReport(); // Assuming you implement this in Office
+                    break;
+                case 2:
+                    office.generateStudentReport(); // Assuming you implement this in Office
+                    break;
+                case 3:
+                    office.generateLecturerReport(); // Assuming you implement this in Office
+                    break;
+                case 4:
+                    office.changeCredentials(); // Change this method's visibility if necessary
+                    break;
+                case 5:
+                    running = false;
+                    System.out.println("Logging out...");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+    
+    
+    
