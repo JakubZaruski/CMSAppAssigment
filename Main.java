@@ -63,4 +63,53 @@ public class Main {
             return null;
         }
     }
-}
+private static void handleAdmin(Admin admin) {
+        System.out.println("Welcome, Admin!");
+
+        while (true) {
+            System.out.println("\nChoose an option:");
+            System.out.println("1. Add User");
+            System.out.println("2. Modify User");
+            System.out.println("3. Delete User");
+            System.out.println("4. Change Own Credentials");
+            System.out.println("5. Logout");
+
+            int choice = Integer.parseInt(scanner.nextLine());
+
+            switch (choice) {
+                case 1:
+                    addUser(admin);
+                    break;
+                case 2:
+                    modifyUser(admin);
+                    break;
+                case 3:
+                    deleteUser(admin);
+                    break;
+                case 4:
+                    changeOwnCredentials(admin);
+                    break;
+                case 5:
+                    return; // Logout
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
+    private static void addUser(Admin admin) {
+        System.out.println("Enter username:");
+        String username = scanner.nextLine();
+
+        System.out.println("Enter password:");
+        String password = scanner.nextLine();
+
+        System.out.println("Enter role (ADMIN, OFFICE, LECTURER):");
+        String roleStr = scanner.nextLine().toUpperCase();
+        UserRole role = UserRole.valueOf(roleStr);
+
+        User newUser = new User(username, password, role);
+        userList.add(newUser); // Add user to userList
+        admin.addUser(newUser); // Add user to admin's userList
+        System.out.println("User added successfully.");
+    }
