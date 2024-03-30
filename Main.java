@@ -129,3 +129,22 @@ private static void handleAdmin(Admin admin) {
         System.out.println("User modified successfully");
     }
     
+    private static void deleteUser(Admin admin) {
+        System.out.println("Enter username of user to delete:");
+        String username = scanner.nextLine();
+
+        admin.deleteUser(username);
+        System.out.println("User deleted successfully");
+    }
+
+    public static void changeOwnCredentials(Admin admin) {
+        System.out.println("Enter new username:");
+        String newUsername = scanner.nextLine();
+
+        System.out.println("Enter new password:");
+        String newPassword = scanner.nextLine();
+
+        admin.changeOwnCredentials(newUsername, newPassword);
+        System.out.println("Own credentials changed successfully");
+    }
+    
