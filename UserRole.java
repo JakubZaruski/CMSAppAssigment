@@ -8,6 +8,6 @@ package cmsapp.CMSApp;
  *
  * @author jakubzaruski
  */
-public class UserRole {
-    
+public enum UserRole {
+    ADMIN, OFFICE, LECTURER
 }
