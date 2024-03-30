@@ -30,3 +30,20 @@ public class InputUtils {
         }
     }
     
+    public static void modifyUser(Admin admin, DataValidator validator) {
+        System.out.println("Enter username of user to modify:");
+        String username = scanner.nextLine();
+        System.out.println("Enter new password:");
+        String newPassword = scanner.nextLine();
+        System.out.println("Enter new role (ADMIN, OFFICE, LECTURER):");
+        String roleStr = scanner.nextLine().toUpperCase();
+        UserRole newRole = UserRole.valueOf(roleStr);
+
+        if (validator.validate(newPassword)) {
+            admin.modifyUser(username, newPassword, newRole);
+            System.out.println("User modified successfully");
+        } else {
+            System.out.println("Invalid password.");
+        }
+    }
+    
