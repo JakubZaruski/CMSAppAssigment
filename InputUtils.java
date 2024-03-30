@@ -130,4 +130,41 @@ public class InputUtils {
         } while (choice != 3);
     }
     
+     private static int promptInt(String message) {
+        while (true) {
+            try {
+                System.out.print(message);
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid integer.");
+            }
+        }
+    }
+    
+    private static class DataValidator {
+        // Constructor
+        public DataValidator() {
+        }
+
+        // Validate username
+        public boolean validateUsername(String username) {
+            if (username == null) {
+                return false;
+            }
+            return username.length() >= 4 && username.length() <= 20;
+        }
+
+        // Validate password
+        public boolean validatePassword(String password) {
+            if (password == null) {
+                return false;
+            }
+            return password.length() >= 8;
+        }
+
+        // General validation method that can be used for other types of data
+        public boolean validate(String data) {
+            return validateUsername(data) || validatePassword(data);
+        }
+    }
     
