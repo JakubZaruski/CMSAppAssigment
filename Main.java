@@ -113,3 +113,19 @@ private static void handleAdmin(Admin admin) {
         admin.addUser(newUser); // Add user to admin's userList
         System.out.println("User added successfully.");
     }
+    
+    private static void modifyUser(Admin admin) {
+        System.out.println("Enter username of user to modify:");
+        String username = scanner.nextLine();
+
+        System.out.println("Enter new password:");
+        String newPassword = scanner.nextLine();
+
+        System.out.println("Enter new role (ADMIN, OFFICE, LECTURER):");
+        String roleStr = scanner.nextLine().toUpperCase();
+        UserRole newRole = UserRole.valueOf(roleStr);
+
+        admin.modifyUser(username, newPassword, newRole);
+        System.out.println("User modified successfully");
+    }
+    
