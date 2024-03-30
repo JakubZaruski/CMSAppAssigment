@@ -68,3 +68,33 @@ public class InputUtils {
         }
     }
     
+    public static void handleOffice(Office office) {
+        System.out.println("Welcome, Office!");
+        int choice;
+        do {
+            System.out.println("\nChoose an option:");
+            System.out.println("1. Generate Reports");
+            System.out.println("2. Change Own Credentials");
+            System.out.println("3. Logout");
+            choice = promptInt("Enter your choice:");
+
+            switch (choice) {
+                case 1:
+                    office.generateReports();
+                    break;
+                case 2:
+                    System.out.println("Enter new username:");
+                    String newUsername = scanner.nextLine();
+                    System.out.println("Enter new password:");
+                    String newPassword = scanner.nextLine();
+                    office.changeOwnCredentials(newUsername, newPassword);
+                    System.out.println("Credentials changed successfully.");
+                    break;
+                case 3:
+                    System.out.println("Logging out...");
+                    return; // Logout
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        } while (choice != 3);
+    }
