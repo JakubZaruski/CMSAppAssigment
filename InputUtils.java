@@ -47,3 +47,24 @@ public class InputUtils {
         }
     }
     
+    public static void deleteUser(Admin admin) {
+        System.out.println("Enter username of user to delete:");
+        String username = scanner.nextLine();
+        admin.deleteUser(username);
+        System.out.println("User deleted successfully");
+    }
+
+    public static void changeOwnCredentials(Admin admin, DataValidator validator) {
+        System.out.println("Enter new username:");
+        String newUsername = scanner.nextLine();
+        System.out.println("Enter new password:");
+        String newPassword = scanner.nextLine();
+
+        if (validator.validate(newPassword)) {
+            admin.changeOwnCredentials(newUsername, newPassword);
+            System.out.println("Own credentials changed successfully");
+        } else {
+            System.out.println("Invalid password.");
+        }
+    }
+    
