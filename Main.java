@@ -184,5 +184,32 @@ private static void handleAdmin(Admin admin) {
         }
     }
     
-    
+    private static void handleLecturer(Lecturer lecturer) {
+        System.out.println("Welcome, Lecturer!");
+        boolean running = true;
+        while (running) {
+            System.out.println("\nChoose an option:");
+            System.out.println("1. Generate Lecturer Report");
+            System.out.println("2. Change Own Credentials");
+            System.out.println("3. Logout");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    lecturer.generateLecturerReport(); // Ensure this method exists in Lecturer
+                    break;
+                case 2:
+                    lecturer.changeCredentials(); // Change this method's visibility if necessary
+                    break;
+                case 3:
+                    running = false;
+                    System.out.println("Logging out...");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}
     
