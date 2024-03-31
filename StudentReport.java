@@ -15,10 +15,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
-
+/**
+ * The StudentReport class is responsible for generating and displaying student reports.
+ * It supports outputting the report in several formats including TXT, CSV, or directly to the console.
+ */
 public class StudentReport {
     private static final Scanner scanner = new Scanner(System.in);
-
+/**
+     * The main method offers options to output the student report in different formats.
+     * 
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
         displayWelcomeMessage();
 
@@ -43,11 +50,16 @@ public class StudentReport {
                 System.out.println("Invalid choice.");
         }
     }
-
+/**
+     * Displays a welcome message at the beginning of the report generation process.
+     */
     private static void displayWelcomeMessage() {
         System.out.println("Welcome to the CMSApp!");
     }
-
+/**
+     * Generates a detailed student report by querying the database and organizing the data.
+     * This method formats the report for direct console output but does not display it.
+     */
     private static void generateStudentReport() {
         String sql = "SELECT s.name AS student_name, s.student_id, p.program_name, " +
                      "       c.name AS course_name, e.semester, g.grade " +
@@ -93,7 +105,12 @@ public class StudentReport {
             e.printStackTrace();
         }
     }
-
+/**
+     * Establishes a connection to the database to retrieve student data.
+     * 
+     * @return A Connection object for the database.
+     * @throws RuntimeException If unable to connect to the database.
+     */
     private static Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); // Ensure the driver is registered
@@ -102,7 +119,11 @@ public class StudentReport {
             throw new RuntimeException("Error connecting to the database", e);
         }
     }
-
+/**
+     * Outputs the student report to a text file with a given file name.
+     * 
+     * @param fileName The name of the file to which the report will be written.
+     */
     private static void outputToTxtFile(String fileName) {
         generateStudentReport(); // Generates the report
 
@@ -118,7 +139,11 @@ public class StudentReport {
             e.printStackTrace();
         }
     }
-
+/**
+     * Outputs the student report to a CSV file with a specified file name.
+     * 
+     * @param fileName The name of the file to which the report will be written.
+     */
     private static void outputToCsvFile(String fileName) {
         generateStudentReport(); // Generates the report
 
@@ -134,7 +159,9 @@ public class StudentReport {
             e.printStackTrace();
         }
     }
-
+/**
+     * Displays the generated student report directly on the console.
+     */
     private static void outputToConsole() {
         generateStudentReport(); // Generates the report
 

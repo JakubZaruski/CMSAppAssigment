@@ -15,10 +15,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
-
+/**
+ * The CourseReport class generates and displays course reports.
+ * It allows outputting the report in different formats such as TXT, CSV, or directly to the console.
+ */
 public class CourseReport {
     private static final Scanner scanner = new Scanner(System.in);
-
+/**
+     * The main method that provides options to output the course report in different formats.
+     * 
+     * @param args Command line arguments (not used).
+     */
     public static void main(String[] args) {
         displayWelcomeMessage();
 
@@ -43,11 +50,17 @@ public class CourseReport {
                 System.out.println("Invalid choice.");
         }
     }
-
+/**
+     * Displays a welcome message to the user.
+     */
     private static void displayWelcomeMessage() {
         System.out.println("Welcome to the CMSApp!");
     }
-
+/**
+     * Generates the course report as a string format, containing details about modules, programs, etc.
+     * 
+     * @return A string representation of the course report.
+     */
     private static String getCourseReportAsString() {
         StringBuilder report = new StringBuilder();
         // Append the report header
@@ -84,7 +97,11 @@ public class CourseReport {
 
         return report.toString();
     }
-
+/**
+     * Generates the course report in a CSV string format for outputting to a CSV file.
+     * 
+     * @return A CSV string representation of the course report.
+     */
     private static String getCourseReportAsStringForCsv() {
         StringBuilder report = new StringBuilder();
         // Append the header for CSV
@@ -120,7 +137,12 @@ public class CourseReport {
 
         return report.toString();
     }
-
+/**
+     * Establishes a connection to the database for fetching course report data.
+     * 
+     * @return A Connection object to the database.
+     * @throws RuntimeException If an error occurs connecting to the database.
+     */
     private static Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); // Ensure the driver is registered
@@ -129,7 +151,11 @@ public class CourseReport {
             throw new RuntimeException("Error connecting to the database", e);
         }
     }
-
+/**
+     * Outputs the course report to a text file.
+     * 
+     * @param fileName The name of the file to output the report to.
+     */
     private static void outputToTxtFile(String fileName) {
         String content = getCourseReportAsString(); // Get report data as string
         // Implementation to write report to a txt file
@@ -140,7 +166,11 @@ public class CourseReport {
             e.printStackTrace();
         }
     }
-
+/**
+     * Outputs the course report to a CSV file.
+     * 
+     * @param fileName The name of the file to output the report to.
+     */
     private static void outputToCsvFile(String fileName) {
         String content = getCourseReportAsStringForCsv(); // Get report data as CSV string
         // Implementation to write report to a csv file
@@ -151,7 +181,9 @@ public class CourseReport {
             e.printStackTrace();
         }
     }
-
+/**
+     * Outputs the course report directly to the console.
+     */
     private static void outputToConsole() {
         String content = getCourseReportAsString(); // Get report data as string
         // Implementation to output report to the console

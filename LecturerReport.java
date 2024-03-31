@@ -16,9 +16,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+/**
+ * The LecturerReport class generates and displays reports about lecturers.
+ * It offers options to output the report in TXT, CSV, or directly to the console.
+ */
 public class LecturerReport {
     private static final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * The main method that provides options to output the lecturer report in different formats.
+     * 
+     * @param args command line arguments.
+     */
     public static void main(String[] args) {
         displayWelcomeMessage();
 
@@ -48,6 +57,11 @@ public class LecturerReport {
         System.out.println("Welcome to the CMSApp!");
     }
 
+    /**
+     * Fetches and constructs the lecturer report as a string.
+     * 
+     * @return The lecturer report in string format.
+     */
     private static String getLecturerReportAsString() {
         StringBuilder report = new StringBuilder();
         // Append the report header
@@ -85,6 +99,12 @@ public class LecturerReport {
         return report.toString();
     }
 
+    /**
+     * Establishes a connection to the database.
+     * 
+     * @return A Connection object to the database.
+     * @throws RuntimeException if a connection error occurs.
+     */
     private static Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); // Ensure the driver is registered
@@ -94,6 +114,11 @@ public class LecturerReport {
         }
     }
 
+    /**
+     * Outputs the lecturer report to a TXT file.
+     * 
+     * @param fileName The name of the file to output the report to.
+     */
     private static void outputToTxtFile(String fileName) {
         String content = getLecturerReportAsString(); // Get report data as string
         // Implementation to write report to a txt file
@@ -105,6 +130,11 @@ public class LecturerReport {
         }
     }
 
+    /**
+     * Outputs the lecturer report to a CSV file.
+     * 
+     * @param fileName The name of the file to output the report to.
+     */
     private static void outputToCsvFile(String fileName) {
         String content = getLecturerReportAsString(); // Get report data as string
         // Implementation to write report to a csv file
@@ -116,6 +146,9 @@ public class LecturerReport {
         }
     }
 
+    /**
+     * Outputs the lecturer report to the console.
+     */
     private static void outputToConsole() {
         String content = getLecturerReportAsString(); // Get report data as string
         // Implementation to output report to the console

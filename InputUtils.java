@@ -9,9 +9,20 @@ package cmsapp.CMSApp;
  */
 import java.util.Scanner;
 
+/**
+ * The InputUtils class contains utility methods for handling user inputs and actions within the CMS application.
+ * It facilitates user interaction for adding, modifying, and deleting users, among other functionalities.
+ */
 public class InputUtils {
     private static final Scanner scanner = new Scanner(System.in);
 
+    /**
+ * Prompts the admin to add a new user by entering the user's details.
+ * Validates the input before adding the user.
+ *
+ * @param admin The admin performing the operation.
+ * @param validator to check inputs.
+ */
     public static void addUser(Admin admin, DataValidator validator) {
         System.out.println("Enter username:");
         String username = scanner.nextLine();
@@ -30,6 +41,12 @@ public class InputUtils {
         }
     }
     
+    /**
+     * Allows the admin to modify an existing user's details after validation.
+     *
+     * @param admin The admin performing the operation.
+     * @param validator to check the new password's validity.
+     */
     public static void modifyUser(Admin admin, DataValidator validator) {
         System.out.println("Enter username of user to modify:");
         String username = scanner.nextLine();
@@ -46,14 +63,23 @@ public class InputUtils {
             System.out.println("Invalid password.");
         }
     }
-    
+    /**
+     * Enables the admin to delete a user from the system.
+     *
+     * @param admin The admin requesting the user deletion.
+     */
     public static void deleteUser(Admin admin) {
         System.out.println("Enter username of user to delete:");
         String username = scanner.nextLine();
         admin.deleteUser(username);
         System.out.println("User deleted successfully");
     }
-
+    /**
+     * Allows admins to change their own credentials after validation.
+     *
+     * @param admin The admin changing their credentials.
+     * @param validator to check the new password's validity.
+     */
     public static void changeOwnCredentials(Admin admin, DataValidator validator) {
         System.out.println("Enter new username:");
         String newUsername = scanner.nextLine();
@@ -67,7 +93,11 @@ public class InputUtils {
             System.out.println("Invalid password.");
         }
     }
-    
+    /**
+     * Presents office users with options to generate reports or manage their credentials.
+     *
+     * @param office The office user interacting with the system.
+     */
     public static void handleOffice(Office office) {
         System.out.println("Welcome, Office!");
         int choice;
@@ -98,7 +128,11 @@ public class InputUtils {
             }
         } while (choice != 3);
     }
-    
+    /**
+     * Provides lecturer users with options to generate reports or manage their credentials.
+     *
+     * @param lecturer The lecturer user interacting with the system.
+     */
     public static void handleLecturer(Lecturer lecturer) {
         System.out.println("Welcome, Lecturer!");
         int choice;
@@ -129,7 +163,13 @@ public class InputUtils {
             }
         } while (choice != 3);
     }
-    
+    /**
+ * Prompts the user for an integer input and returns the value.
+ * Repeatedly prompts the user until a valid integer is entered.
+ *
+ * @param message the message to display to the user prompting for input
+ * @return the integer value entered by the user
+ */
      private static int promptInt(String message) {
         while (true) {
             try {
@@ -140,7 +180,9 @@ public class InputUtils {
             }
         }
     }
-    
+    /**
+     * DataValidator class for validating user inputs.
+     */
     private static class DataValidator {
         // Constructor
         public DataValidator() {
