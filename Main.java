@@ -7,6 +7,9 @@ package cmsapp.CMSApp;
  *
  * @author jakubzaruski
  */
+import com.cmsapp.users.Admin;
+import com.cmsapp.users.Lecturer;
+import com.cmsapp.users.Office;
 import com.cmsapp.users.User;
 import com.cmsapp.users.UserRole;
 import java.util.ArrayList;
